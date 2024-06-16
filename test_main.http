@@ -1,0 +1,73 @@
+### Получение случайной цитаты
+GET http://127.0.0.1:8000/random_quote
+Accept: application/json
+
+###
+
+### Добавление новой цитаты (с правильным секретным токеном)
+POST http://127.0.0.1:8000/add_quote
+Accept: application/json
+Content-Type: application/json
+x-token: your_secret_token
+
+{
+  "text": "Тестовая цитата для добавления.",
+  "author": "Автор Теста",
+  "theme": "Тест"
+}
+
+###
+
+### Добавление новой цитаты (с неправильным секретным токеном)
+POST http://127.0.0.1:8000/add_quote
+Accept: application/json
+Content-Type: application/json
+x-token: invalid_token
+
+{
+  "text": "Тестовая цитата с неправильным токеном.",
+  "author": "Автор Теста",
+  "theme": "Тест"
+}
+
+###
+
+### Обновление существующей цитаты (с правильным секретным токеном)
+PUT http://127.0.0.1:8000/update_quote/1
+Accept: application/json
+Content-Type: application/json
+x-token: your_secret_token
+
+{
+  "text": "Обновленная тестовая цитата.",
+  "author": "Обновленный Автор",
+  "theme": "Обновленный Тест"
+}
+
+###
+
+### Обновление существующей цитаты (с неправильным секретным токеном)
+PUT http://127.0.0.1:8000/update_quote/1
+Accept: application/json
+Content-Type: application/json
+x-token: invalid_token
+
+{
+  "text": "Тестовая цитата с неправильным токеном для обновления.",
+  "author": "Автор Теста",
+  "theme": "Тест"
+}
+
+###
+
+### Удаление существующей цитаты (с правильным секретным токеном)
+DELETE http://127.0.0.1:8000/delete_quote/1
+Accept: application/json
+x-token: your_secret_token
+
+###
+
+### Удаление существующей цитаты (с неправильным секретным токеном)
+DELETE http://127.0.0.1:8000/delete_quote/1
+Accept: application/json
+x-token: invalid_token
